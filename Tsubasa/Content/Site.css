@@ -1,0 +1,860 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Acme');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
+@import url('https://fonts.googleapis.com/css?family=Righteous|Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Viga');
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* -------------------------------- Primary style -------------------------------- */
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    /* you need to set this to assign to the main element a min height of 100% */
+    height: 100%;
+}
+
+body {
+    font-size: 100%;
+    font-family: "Titillium Web", sans-serif;
+    color: black;
+    background-color: #1a1a1a;
+}
+a {
+    color: #6cac70;
+    text-decoration: none;
+}
+/* -------------------------------- Modules - reusable parts of our design -------------------------------- */
+.cd-img-replace {
+    /* replace text with a background-image */
+    display: inline-block;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+/* -------------------------------- Main components -------------------------------- */
+.cd-main-content {
+    /* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
+    min-height: 100%;
+    position: relative;
+    background-color: #1a1a1a;
+    z-index: 2;
+    padding-top: 50px;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+    .cd-main-content.lateral-menu-is-open {
+        /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+        -webkit-transform: translateX(-260px);
+        -moz-transform: translateX(-260px);
+        -ms-transform: translateX(-260px);
+        -o-transform: translateX(-260px);
+        transform: translateX(-260px);
+    }
+
+@media only screen and (min-width: 768px) {
+    .cd-main-content {
+        padding-top: 100px;
+    }
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    background: black;
+    z-index: 3;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#cd-logo {
+    height: 75px;
+    -webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+    -moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+    transition: transform .4s 0s, visibility 0s .4s;
+    font-family: 'Acme', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+header.lateral-menu-is-open {
+    /* translate to show the lateral menu */
+    -webkit-transform: translateX(-260px);
+    -moz-transform: translateX(-260px);
+    -ms-transform: translateX(-260px);
+    -o-transform: translateX(-260px);
+    transform: translateX(-260px);
+}
+
+header.is-fixed {
+    position: fixed;
+}
+
+@media only screen and (min-width: 768px) {
+    header {
+        height: 100px;
+    }
+}
+
+#cd-logo {
+    float: left;
+    margin: 12px 0 0 20px;
+    font-size: 13px;
+}
+
+    #cd-logo img {
+        height: 60px;
+    }
+
+@media only screen and (min-width: 768px) {
+    #cd-logo {
+        margin: 12px 0 0 15px;
+    }
+}
+
+#cd-top-nav {
+    position: absolute;
+    top: 0;
+    right: 120px;
+    height: 100%;
+    display: none;
+}
+
+    #cd-top-nav ul {
+        height: 100%;
+    }
+
+    #cd-top-nav li {
+        height: 100%;
+        display: inline-block;
+        padding: 34px 1em;
+        transition: 0.4s;
+    }
+
+    #cd-top-nav a {
+        display: inline-block;
+        padding: .5em;
+        color: #FFF;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+        #cd-top-nav a.current {
+            background-color: #7289da;
+        }
+
+    #cd-top-nav li:hover {
+        background-color: #7289da;
+    }
+
+.no-touch #cd-top-nav a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media only screen and (min-width: 768px) {
+    #cd-top-nav {
+        display: block;
+    }
+}
+
+#cd-menu-trigger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background-color: #303030;
+}
+
+    #cd-menu-trigger .cd-menu-text {
+        height: 100%;
+        text-transform: uppercase;
+        color: #FFF;
+        font-weight: 600;
+        display: none;
+    }
+
+    #cd-menu-trigger .cd-menu-icon {
+        /* this span is the central line in the menu menu */
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        width: 18px;
+        height: 2px;
+        background-color: #FFF;
+        /* these are the upper and lower lines in the menu menu */;
+    }
+
+        #cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: inherit;
+            left: 0;
+        }
+
+        #cd-menu-trigger .cd-menu-icon::before {
+            bottom: 5px;
+        }
+
+        #cd-menu-trigger .cd-menu-icon::after {
+            top: 5px;
+        }
+
+    #cd-menu-trigger.is-clicked .cd-menu-icon {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+        #cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+            background-color: white;
+        }
+
+        #cd-menu-trigger.is-clicked .cd-menu-icon::before {
+            bottom: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+            top: 0;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+@media only screen and (min-width: 768px) {
+    #cd-menu-trigger {
+        width: 110px;
+        padding-left: 1.25em;
+    }
+
+        #cd-menu-trigger .cd-menu-text {
+            display: inline-block;
+            line-height: 100px;
+        }
+
+        #cd-menu-trigger .cd-menu-icon {
+            left: auto;
+            right: 1.25em;
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+            transform: translateX(0);
+        }
+}
+
+#cd-lateral-nav {
+    position: fixed;
+    height: 100%;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    /* the secondary navigation is covered by the main element */
+    z-index: 1;
+    width: 260px;
+    background-color: black;
+    overflow-y: auto;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+    -moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+    transition: transform .4s 0s, visibility 0s .4s;
+    /* this creates the subtle slide in animation of the navigation */
+    -webkit-transform: translateX(80px);
+    -moz-transform: translateX(80px);
+    -ms-transform: translateX(80px);
+    -o-transform: translateX(80px);
+    transform: translateX(80px);
+}
+
+    #cd-lateral-nav .cd-navigation {
+        margin: 10px 0 16px;
+    }
+
+    #cd-lateral-nav .sub-menu {
+        padding: 0 10px 20px 15px;
+        display: none;
+    }
+
+    #cd-lateral-nav a {
+        display: block;
+        line-height: 2em;
+        padding: 0 16px 0 32px;
+        color: white;
+    }
+
+        #cd-lateral-nav a.current {
+            background-color: #3a4a4d;
+            color: #FFF;
+        }
+
+.no-touch #cd-lateral-nav a:hover {
+    color: #FFF;
+}
+
+@media only screen and (min-width: 768px) {
+    #cd-lateral-nav .cd-navigation {
+        margin: 20px 0;
+    }
+}
+
+#cd-lateral-nav.lateral-menu-is-open {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    visibility: visible;
+    -webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+    -moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
+    transition: transform .4s 0s, visibility 0s 0s;
+    /* smooth the scrolling on touch devices - webkit browsers */
+    -webkit-overflow-scrolling: touch;
+}
+/* style menu items which have a submenu */
+#cd-lateral-nav .item-has-children > a {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+    /* this is the right arrow to show that the item has a submenu */;
+}
+
+    #cd-lateral-nav .item-has-children > a::after {
+        content: '';
+        display: block;
+        height: 11px;
+        width: 8px;
+        position: absolute;
+        top: 50%;
+        bottom: auto;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 1em;
+        background: url("../img/cd-arrow.svg") no-repeat center center;
+        background-size: 8px 11px;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.2s;
+        -moz-transition-duration: 0.2s;
+        transition-duration: 0.2s;
+    }
+
+    #cd-lateral-nav .item-has-children > a.submenu-open::after {
+        -webkit-transform: translateY(-50%) rotate(90deg);
+        -moz-transform: translateY(-50%) rotate(90deg);
+        -ms-transform: translateY(-50%) rotate(90deg);
+        -o-transform: translateY(-50%) rotate(90deg);
+        transform: translateY(-50%) rotate(90deg);
+    }
+
+#cd-lateral-nav .socials {
+    padding: 0 32px;
+}
+
+    #cd-lateral-nav .socials:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    #cd-lateral-nav .socials a {
+        height: 32px;
+        width: 32px;
+        float: left;
+        padding: 0;
+        background-image: url("../Images/cd-socials.svg");
+        background-repeat: no-repeat;
+        background-size: 128px 64px;
+        background-color: #FFF;
+        margin-right: .5em;
+        border-radius: 0.25em;
+    }
+
+        #cd-lateral-nav .socials a.cd-twitter {
+            background-position: 0 0;
+        }
+
+        #cd-lateral-nav .socials a.cd-github {
+            background-position: -32px 0;
+        }
+
+        #cd-lateral-nav .socials a.cd-facebook {
+            background-position: -64px 0;
+        }
+
+        #cd-lateral-nav .socials a.cd-google {
+            background-position: -96px 0;
+        }
+
+.no-touch #cd-lateral-nav .socials a:hover {
+    background-color: black;
+}
+
+    .no-touch #cd-lateral-nav .socials a:hover.cd-twitter {
+        background-position: 0 -32px;
+    }
+
+    .no-touch #cd-lateral-nav .socials a:hover.cd-github {
+        background-position: -32px -32px;
+    }
+
+    .no-touch #cd-lateral-nav .socials a:hover.cd-facebook {
+        background-position: -64px -32px;
+    }
+
+    .no-touch #cd-lateral-nav .socials a:hover.cd-google {
+        background-position: -96px -32px;
+    }
+
+.menu-is-open {
+    -webkit-transform: translateX(260px);
+    -moz-transform: translateX(260px);
+    -ms-transform: translateX(260px);
+    -o-transform: translateX(260px);
+    transform: translateX(260px);
+}
+
+/* -------Default Page------- */
+/* Soul Worker */
+#discordBanner {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    padding-top: 100px;
+    bottom: 0;
+    top: 100px;
+    background-image: url('../Images/MainHeaderBG.png');
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    max-height: 100%;
+    pointer-events: none;
+    text-align: center;
+}
+
+    #discordBanner h2 {
+        color: white;
+        font-family: 'Righteous', sans-serif;
+        font-size: 65px;
+        padding-bottom: 100px;
+        text-transform: uppercase;
+        text-shadow: 0px 5px 20px rgba(114, 137, 218, 1);
+    }
+
+    #discordBanner h3 {
+        color: white;
+        font-family: 'Acme', sans-serif;
+        font-size: 26px;
+        padding-top: 25px;
+        padding-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 0px 5px 15px rgba(114, 137, 218, 0.6);
+    }
+
+    .discordButton {
+        pointer-events: all;
+    }
+
+.discordButton {
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.buttonWrap {
+    width: 250px;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #7289da;
+    border: none;
+    border-radius: 45px;
+    padding: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+    .buttonWrap:hover {
+        box-shadow: 0px 15px 20px rgba(114, 137, 218, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+    }
+
+    .buttonWrap img {
+        width: 150px;
+    }
+
+.SWSide {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    background-position: left bottom;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.SWBW {
+    background-image: url('../Images/SoulWorker/SWBWBG.png');
+}
+.SWColour {
+    background-image: url('../Images/SoulWorker/SWColourBG.png');
+    display: none;
+    z-index: 30;
+}
+.MS2Side {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.MS2BW {
+    background-image: url('../Images/Maplestory2/MS2BWBG2.png');
+}
+.MS2Colour {
+    background-image: url('../Images/Maplestory2/MS2ColourBG2.png');
+    display: none;
+    overflow: hidden;
+    z-index: 30;
+}
+.SWHoverArea {
+    width: 50%;
+    max-width: 40%;
+    height: 50%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.MS2HoverArea {
+    width: 50%;
+    max-width: 40%;
+    height: 50%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#SWLogo {
+    z-index: 35;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+}
+#SWLogoColour {
+    z-index: 35;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    left: 0;
+    cursor: pointer;
+    display: none;
+}
+#MS2Logo {
+    z-index: 35;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+#MS2Logo img, #SWLogo img, #MS2LogoColour img, #SWLogoColour img {
+    width: 100%;
+}
+
+#MS2LogoColour {
+    z-index: 35;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: none;
+}
+
+#SWScene {
+    background-image: url('../Images/SoulWorker/SWSceneBG.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left bottom;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: none;
+}
+
+#SWActor1, #SWJP1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+#SWActor1 {
+    max-width: 62%;
+}
+#SWJP1 {
+    max-width: 29.5%;
+}
+
+@media only screen and (min-width: 368px) {
+    #SWJP1 {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #SWActor1 {
+        max-width: 50.2%;
+    }
+    #SWJP1 {
+        display: block;
+        max-width: 23.7%;
+    }
+}
+
+#SWActor2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 50%;
+}
+
+#SWJP2, #SWJP3 {
+    position: absolute;
+    bottom: 0;
+}
+
+#SWJP2 {
+    right: 0;
+}
+#SWJP3 {
+    right: 45px;
+}
+
+#SWSceneLogo {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    max-width: 40%;
+}
+
+#SWBanner {
+    position: absolute;
+    top: 0;
+    z-index: 500;
+}
+
+#MS2Scene {
+    background-image: url('../Images/Maplestory2/MS2SceneBG.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right bottom;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: none;
+}
+
+#MS2SceneLogo {
+    position: absolute !important;
+    bottom: 2px;
+    right: 0;
+    max-width: 40%;
+}
+
+
+#MS2Parallax {
+    width: 100%;
+    height: 100%;
+}
+
+#clickMeRight {
+    width: 200px;
+    position: absolute;
+    left: 20%;
+    bottom: 40px;
+    z-index: 99;
+    display: none;
+}
+
+#clickMeLeft {
+    width: 200px;
+    position: absolute;
+    right: 12%;
+    bottom: 15px;
+    z-index: 99;
+    display: none;
+}
+
+#MSHeaderText, #MSHeaderText2, #MSHeaderText3 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 62px;
+    text-shadow: 3px 3px black;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+
+#MSHeaderText {
+    top: 25%;
+    left: 0;
+    right: 0;
+}
+#MSHeaderText2 {
+    top: 35%;
+    left: 0;
+    right: 0;
+}
+#MSHeaderText3{
+    top: 45%;
+    left: 0;
+    right: 0;
+}
+
+.maplestory-button-cta {
+    background: url(../Images/Maplestory2/button-normal.png) no-repeat top/100% 18.3rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 32px;
+    text-align: center;
+    font-family: Viga;
+    color: #373006;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70%;
+    width: 455px;
+    text-transform: uppercase;
+    font-family: Viga;
+    color: #373006;
+    padding: 20px;
+    height: 68px;
+    background-size: 100% 100%;
+    transition: background ease-in-out 0.5s;
+}
+
+.maplestory-button-cta:hover {
+    background-image: url(../Images/Maplestory2/button-hover.png);
+}
