@@ -45,7 +45,6 @@
             <div id="MS2LogoColour">
                 <img src="~/Images/Maplestory2/MS2ColourLogo.png" />
             </div>
-            <img id="clickMeRight" src="~/Images/ClickMeRight.png" />
         </div>
         <div class="SWHoverArea">
             <div id="SWLogo">
@@ -54,8 +53,11 @@
             <div id="SWLogoColour">
                 <img src="~/Images/SoulWorker/SWColourLogo.png" />
             </div>
-            <img id="clickMeLeft" src="~/Images/ClickMeLeft.png" />
         </div>
+        <img id="clickMeRight" class="clickMe" src="~/Images/ClickMeRight.png" />
+        <img id="clickMeLeft" class="clickMe" src="~/Images/ClickMeLeft.png" />
+        <div id="divider"></div>
+        <img id="closeButton" src="~/Images/Close.png" />
         <div class="SWSide SWBW"></div>
         <div class="SWSide SWColour"></div>
         <div class="MS2Side MS2BW"></div>
@@ -65,12 +67,29 @@
 @section scripts {
    <script type="text/javascript">
        var SWOpen = false, MS2Open = false;
-       function animateJP2(targetElement, speed) {
-           $(targetElement).animate({ right: '-=2', top: '+=40'},
+       function animateJP1(targetElement, speed) {
+           $(targetElement).animate({ right: '-=2', top: '+=40' },
                {
                    duration: speed,
                    complete: function () {
-                       $(targetElement).animate({ right: '+=2', top: '-=40'},
+                       $(targetElement).animate({ right: '+=2', top: '-=40' },
+                           {
+                               duration: speed,
+                               complete: function () {
+                                   if (SWOpen && $(window).width() < 768) {
+                                       animateJP1(targetElement, speed);
+                                   }
+                               }
+                           });
+                   }
+               });
+       };
+       function animateJP2(targetElement, speed) {
+           $(targetElement).animate({ right: '-=2', bottom: '+=40'},
+               {
+                   duration: speed,
+                   complete: function () {
+                       $(targetElement).animate({ right: '+=2', bottom: '-=40'},
                            {
                                duration: speed,
                                complete: function () {
@@ -87,45 +106,56 @@
            var scene = $('#MS2Parallax').get(0);
            var MS2Parallax = new Parallax(scene);
            $('.SWHoverArea').hover(function () {
-               $('.SWColour').fadeIn(1000);
-               $('#SWLogoColour').fadeIn(200);
-               $('#clickMeLeft').fadeIn(200);
+               if ($('#SWLogoColour').css('display') == 'none' && $(window).width() > 768) {
+                   $('.SWColour').fadeIn(1000);
+                   $('#SWLogoColour').fadeIn(200);
+                   $('#clickMeLeft').fadeIn(200);
+               }
                
            }, function () {
-               $('.SWColour').fadeOut(1000);
-               $('#SWLogoColour').fadeOut(200);
-               $('#clickMeLeft').fadeOut(200);
+               if ($('#SWLogoColour').css('display') == 'block' && $(window).width() > 768) {
+                   $('.SWColour').fadeOut(1000);
+                   $('#SWLogoColour').fadeOut(200);
+                   $('#clickMeLeft').fadeOut(200);
+               }
            });
            $('.MS2HoverArea').hover(function () {
-               $('.MS2Colour').fadeIn(1000);
-               $('#MS2LogoColour').fadeIn(200);
-               $('#clickMeRight').fadeIn(200);
+               if ($('#MS2LogoColour').css('display') == 'none' && $(window).width() > 768) {
+                   $('.MS2Colour').fadeIn(1000);
+                   $('#MS2LogoColour').fadeIn(200);
+                   $('#clickMeRight').fadeIn(200);
+               }
            }, function () {
-               $('.MS2Colour').fadeOut(1000);
-               $('#MS2LogoColour').fadeOut(200);
-               $('#clickMeRight').fadeOut(200);
-               });
+               if ($('#MS2LogoColour').css('display') == 'block' && $(window).width() > 768) {
+                   $('.MS2Colour').fadeOut(1000);
+                   $('#MS2LogoColour').fadeOut(200);
+                   $('#clickMeRight').fadeOut(200);
+               }
+           });
            $('#SWLogoColour').click(function () {
                SWOpen = true;
                $('#SWScene').fadeIn(1000);
+               if ($(window).width() < 768) {
+                   animateJP1('#SWJP1', 6000);
+               }
                animateJP2('#SWJP2', 4000);
                setTimeout(function () {
                    animateJP2('#SWJP3', 6000);
                }, 500);
-           });
-           $('#SWScene').click(function () {
-               SWOpen = false;
-               $('#SWScene').fadeOut(1000);
+               $('#closeButton').fadeIn(1000);
            });
            $('#MS2LogoColour').click(function () {
                SWOpen = true;
                $('#MS2Scene').fadeIn(1000);
+               $('#closeButton').fadeIn(1000);
                MS2Parallax.enable();
            });
-           $('#MS2Scene').click(function () {
+           $('#closeButton').click(function () {
+               SWOpen = false;
                MS2Open = false;
+               $('#SWScene').fadeOut(1000);
                $('#MS2Scene').fadeOut(1000);
-               MS2Parallax.disable();
+               $('#closeButton').fadeOut(1000);
            });
        });
     </script>
