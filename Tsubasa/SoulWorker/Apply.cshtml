@@ -1,0 +1,149 @@
+﻿@using System;
+@using System.Net;
+@using System.Net.Http;
+@using System.Net.Http.Headers;
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Tsubasa - SoulWorker Application";
+
+    if (IsPost) {
+        var characterName = Request["CharacterName"];
+        var characterClass = Request["CharacterSelect"];
+        var location = Request["location"];
+        var experience = Request["experience"];
+        var preference = Request["preference"];
+        var voiceComms = Request["voicecomms"];
+        var playtime = Request["playtime"];
+        var playerType = Request["playertype"];
+        var prevGuilds = Request["prevguilds"];
+        var lookingFor = Request["lookingfor"];
+        var prevMMOs = Request["prevmmos"];
+        var contribute = Request["contribute"];
+        string application = "__**Application**__\n\n**What is your character name?**\n" + characterName +
+            "\n\n**What is your primary character class?**\n" + characterClass+
+            "\n\n**Where are you from (please provide a timezone)?**\n"+location+
+            "\n\n**How much experience do you have playing SoulWorker? **\n" + experience +
+            "\n\n**Are you interested in PvP, PvE or both?**\n" + preference +
+            "\n\n**Are you comfortable using Voice Communication programs such as Discord?**\n" + voiceComms +
+            "\n\n**How frequently do you intend to play?**\n" + playtime +
+            "\n\n**Which of these describes you best?**\n" + playerType +
+            "\n\n**Which guild(s) were you in previously? (if any)**\n" + prevGuilds +
+            "\n\n**What are you looking for in a guild?**\n" + lookingFor +
+            "\n\n**Do you have any experiences with guilds/clans in other MMORPGs? If yes, please specify.**\n" + prevMMOs +
+            "\n\n**If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?**\n" + contribute + "\n\n\n";
+        DiscordWebhook.Webhook hook = new DiscordWebhook.Webhook("https://discordapp.com/api/webhooks/________________/________________"); //Replace with webhook url
+        hook.Send(application, "Website Application", "https://tsubasa.kr/Images/logo.png");
+    }
+
+
+
+}
+
+@section page {
+    <div class="SWApply">
+        <img id="ApplyStella" src="~/Images/Stella.png" />
+        <img id="ApplyHaru" src="~/Images/Haru.png" />
+        <h2>Ready to join us?</h2>
+        <h3>Fill out the form below so we can get to know you!</h3>
+        <div class="SWApplyBox">
+            <form method="post">
+                <fieldset>
+                    <div class="question">
+                        <label for="CharacterName">What is your character name?</label>
+                        <input type="text" name="CharacterName" value="" required />
+                    </div>
+                    <div class="question">
+                        <label for="ClassSelect">What is your primary character class?</label>
+                        <div id="ClassSelectList">
+                            <input id="HaruSelect" type="radio" name="CharacterSelect" value="Haru" required />
+                            <label class="CharacterClass ActiveClass" id="ClassHaru" for="HaruSelect"></label>
+                            <input id="ErwinSelect" type="radio" name="CharacterSelect" value="Erwin" required />
+                            <label class="CharacterClass ActiveClass" id="ClassErwin" for="ErwinSelect"></label>
+                            <input id="LilySelect" type="radio" name="CharacterSelect" value="Lily" required />
+                            <label class="CharacterClass ActiveClass" id="ClassLily" for="LilySelect"></label>
+                            <input id="StellaSelect" type="radio" name="CharacterSelect" value="Stella" required />
+                            <label class="CharacterClass ActiveClass" id="ClassStella" for="StellaSelect"></label>
+                            <input id="JinSelect" type="radio" name="CharacterSelect" disabled value="Jin" required />
+                            <label class="CharacterClass InactiveClass" id="ClassJin" for="JinSelect"></label>
+                            <input id="IrisSelect" type="radio" name="CharacterSelect" disabled value="Iris" required />
+                            <label class="CharacterClass InactiveClass" id="ClassIris" for="IrisSelect"></label>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label for="location">Where are you from (please provide a timezone)?</label>
+                        <input type="text" name="location" value="" required />
+                    </div>
+                    <div class="question">
+                        <label for="experience">How much experience do you have playing SoulWorker?</label>
+                        <input type="text" name="experience" value="" required />
+                    </div>
+                    <div class="question">
+                        <label>Are you interested in PvP, PvE or both?</label>
+                        <div>
+                            <div class="radio-choice"><input id="PrefPvP" type="radio" name="preference" value="PvP"><label for="PrefPvP" class="radio">PvP!</label></div>
+                            <div class="radio-choice"><input id="PrefPvE" type="radio" name="preference" value="PvE"><label for="PrefPvE" class="radio">PvE!</label></div>
+                            <div class="radio-choice"><input id="PrefBoth" type="radio" name="preference" value="Both"><label for="PrefBoth" class="radio">Both!</label></div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Are you comfortable using Voice Communication programs such as Discord?</label>
+                        <div>
+                            <div class="radio-choice"><input id="voiceyes" type="radio" name="voicecomms" value="Yes"><label for="voiceyes" class="radio">Yes</label></div>
+                            <div class="radio-choice"><input id="voiceno" type="radio" name="voicecomms" value="No"><label for="voiceno" class="radio">No</label></div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label for="playtime">How frequently do you intend to play?</label>
+                        <input type="text" name="playtime" value="" required />
+                    </div>
+                    <div class="question">
+                        <label>Which of these describes you best?</label>
+                        <div>
+                            <div class="radio-choice"><input id="casual" type="radio" name="playertype" value="Casual"><label for="casual" class="radio">Casual</label></div>
+                            <div class="radio-choice"><input id="shc" type="radio" name="playertype" value="Semi-Hardcore"><label for="shc" class="radio">Semi-Hardcore</label></div>
+                            <div class="radio-choice"><input id="hc" type="radio" name="playertype" value="Hardcore"><label for="hc" class="radio">Hardcore</label></div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label for="prevguilds">Which guild(s) were you in previously? (if any)</label>
+                        <input type="text" name="prevguilds" value="" required />
+                    </div>
+                    <div class="question">
+                        <label for="lookingfor">What are you looking for in a guild?</label>
+                        <textarea name="lookingfor" value="" rows="1" onkeyup="auto_grow(this)"></textarea>
+                    </div>
+                    <div class="question">
+                        <label for="prevmmos">Do you have any experiences with guilds/clans in other MMORPGs? If yes, please specify.</label>
+                        <textarea name="prevmmos" value="" rows="1" onkeyup="auto_grow(this)"></textarea>
+                    </div>
+                    <div class="question">
+                        <label for="contribute">If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?</label>
+                        <textarea name="contribute" value="" rows="1" onkeyup="auto_grow(this)"></textarea>
+                    </div>
+                    <div class="question submitButton">
+                        <label>&nbsp;</label>
+                        <input type="submit" value="Submit" class="submit" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $(function () {
+                var $target = $('.SWApply');
+                $("body").mousewheel(function (event, delta) {
+                    $target.scrollTop($target.scrollTop() - (delta * 50));
+                    event.preventDefault();
+                });
+            });
+        });
+        function auto_grow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight) + "px";
+        }
+    </script>
+}
