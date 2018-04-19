@@ -1,0 +1,47 @@
+﻿@using System;
+@using System.Net;
+@using System.Net.Http;
+@using System.Net.Http.Headers;
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Thanks for applying!";
+    string referencePage = (Request.UrlReferrer == null) ? "" : Request.UrlReferrer.ToString();
+    if (referencePage != "https://tsubasa.kr/SoulWorker/Apply")
+    {
+        Response.Redirect("~/SoulWorker/Apply");
+    }
+
+}
+
+@section page {
+    <div class="SWApply">
+        <img id="ApplyStella" src="~/Images/Stella.png" />
+        <img id="ApplyHaru" src="~/Images/Haru.png" />
+        <h2 id="applyConfirmStart">Thanks for applying!</h2>
+        <h3>Your guild application is being reviewed, and we will reach out to you in game or on Discord if you're accepted.</h3>
+        <h3 id="applyConfirmEnd">In the meanwhile, feel free to hang out on our Discord server by clicking the button below!</h3>
+        <a class="discordButton" href="https://discordapp.com/invite/AamQhe">
+            <div class="buttonWrap">
+                <img src="~/Images/Discord.png" />
+            </div>
+        </a>
+    </div>
+}
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $(function () {
+                var $target = $('.SWApply');
+                $("body").mousewheel(function (event, delta) {
+                    $target.scrollTop($target.scrollTop() - (delta * 50));
+                    event.preventDefault();
+                });
+            });
+        });
+        function auto_grow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight) + "px";
+        }
+    </script>
+}

@@ -2,6 +2,7 @@
 @using System.Net;
 @using System.Net.Http;
 @using System.Net.Http.Headers;
+@using hbehr.recaptcha;
 @{
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Tsubasa - SoulWorker Application";
@@ -31,8 +32,19 @@
             "\n\n**What are you looking for in a guild?**\n" + lookingFor +
             "\n\n**Do you have any experiences with guilds/clans in other MMORPGs? If yes, please specify.**\n" + prevMMOs +
             "\n\n**If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?**\n" + contribute + "\n\n\n";
-        DiscordWebhook.Webhook hook = new DiscordWebhook.Webhook("https://discordapp.com/api/webhooks/________________/________________"); //Replace with webhook url
-        hook.Send(application, "Website Application", "https://tsubasa.kr/Images/logo.png");
+
+        string userResponse = Request["g-recaptcha-response"];
+        bool validCaptcha = ReCaptcha.ValidateCaptcha(userResponse);
+        if (validCaptcha)
+        {
+            DiscordWebhook.Webhook hook = new DiscordWebhook.Webhook("https://discordapp.com/api/webhooks/????????????????????????????????????");
+            hook.Send(application, "Website Application", "https://tsubasa.kr/Images/logo.png");
+            Response.Redirect("~/SoulWorker/Confirm");
+        }
+        else
+        {
+            Response.Redirect("~/");
+        }
     }
 
 
@@ -119,6 +131,9 @@
                     <div class="question">
                         <label for="contribute">If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?</label>
                         <textarea name="contribute" value="" rows="1" onkeyup="auto_grow(this)"></textarea>
+                    </div>
+                    <div class="question">
+                        @ReCaptcha.GetCaptcha()
                     </div>
                     <div class="question submitButton">
                         <label>&nbsp;</label>
