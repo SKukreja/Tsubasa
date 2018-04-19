@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous|Yanone+Kaffeesatz');
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
 @import url('https://fonts.googleapis.com/css?family=Viga');
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -418,7 +419,7 @@ header.is-fixed {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 1em;
-    background: url("../img/cd-arrow.svg") no-repeat center center;
+    /*background: url("../Images/cd-arrow.svg") no-repeat center center;*/
     background-size: 8px 11px;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
@@ -451,7 +452,7 @@ header.is-fixed {
     width: 32px;
     float: left;
     padding: 0;
-    background-image: url("../Images/cd-socials.svg");
+    /*background-image: url("../Images/cd-socials.svg");*/
     background-repeat: no-repeat;
     background-size: 128px 64px;
     background-color: #FFF;
@@ -815,6 +816,7 @@ header.is-fixed {
     height: 100%;
     z-index: 100;
     display: none;
+    pointer-events: none;
 }
 
 #SWActor1, #SWJP1 {
@@ -823,6 +825,7 @@ header.is-fixed {
     max-height: 100%;
     max-width: 100%;
     z-index: 400;
+    pointer-events: none;
 }
 
 
@@ -831,11 +834,13 @@ header.is-fixed {
     right: 0;
     bottom: 0;
     max-width: 50%;
+    pointer-events: none;
 }
 
 #SWJP2, #SWJP3 {
     position: absolute;
     bottom: 0;
+    pointer-events: none;
 }
 
 #SWSceneLogo {
@@ -844,12 +849,42 @@ header.is-fixed {
     left: 0;
     max-width: 40%;
     z-index: 501;
+    pointer-events: none;
 }
 
 #SWBanner {
     position: absolute;
     top: 0;
     z-index: 500;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    background-image: url('../Images/SoulWorker/SWBannerBG.png');
+    background-position: top center;
+    background-size: cover;
+    text-align: right;
+}
+
+#SWBanner h2 {
+    font-family: 'Passion One', sans-serif;
+    color: white;
+}
+
+#SWBanner h3 {
+    font-family: 'Passion One', sans-serif;
+    color: white;
+}
+
+#SWSceneApplyButton {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 505;
+    pointer-events: auto;
+    cursor: pointer;
+    padding: 1% 2%;
 }
 
 @media only screen and (min-width: 0px) {
@@ -869,6 +904,25 @@ header.is-fixed {
 
     #SWJP3 {
         display: none;
+    }
+
+    #SWSceneApplyButton {
+        width: 175px;
+        bottom: 55%;
+    }
+
+    #SWBanner {
+        padding-top: 125px;
+        padding-right: 75px;
+        padding-left: 75px;
+    }
+
+    #SWBanner h2 {
+        font-size: 24px
+    }
+
+    #SWBanner h3 {
+        font-size: 48px;
     }
 }
 
@@ -890,6 +944,25 @@ header.is-fixed {
     #SWJP3 {
         right: 45px;
         display: block;
+    }
+
+    #SWSceneApplyButton {
+        width: 225px;
+        bottom: 50px;
+    }
+
+    #SWBanner {
+        padding-top: 150px;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+
+    #SWBanner h2 {
+        font-size: 32px;
+    }
+
+    #SWBanner h3 {
+        font-size: 72px;
     }
 }
 
@@ -986,6 +1059,10 @@ header.is-fixed {
 }
 
 .SWApplyBox input[type=submit] {
+    width: 100%;
+}
+
+.SWApplyBox input[type=submit], .SWButton {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -998,7 +1075,6 @@ header.is-fixed {
     color: black;
     display: inline-block;
     font-size: 24px;
-    width: 100%;
     text-transform: uppercase;
     line-height: normal;
     overflow: hidden;
@@ -1011,7 +1087,7 @@ header.is-fixed {
     transition: background 200ms ease-in-out;
 }
 
-.SWApplyBox input[type=submit]:hover {
+.SWApplyBox input[type=submit]:hover, .SWButton:hover {
     background-color: #fcdb68;
 }
 
@@ -1138,9 +1214,9 @@ header.is-fixed {
 }
 
 #ApplyHaru, #ApplyStella {
-    width: 80%;
     position: fixed;
     bottom: 0;
+    pointer-events: none;
 }
 
 #ApplyStella {
@@ -1180,11 +1256,20 @@ header.is-fixed {
         padding-left: 20px;
         padding-right: 20px;
     }
+
+    #applyConfirmStart {
+        padding-top: 20%;
+    }
+
+    #applyConfirmEnd {
+        margin-bottom: 10%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     #ApplyHaru, #ApplyStella {
         display: block;
+        width: 65%;
     }
 
     .SWApplyBox {
@@ -1206,6 +1291,21 @@ header.is-fixed {
 
     .SWApply h3 {
         font-size: 24px;
+    }
+
+    #applyConfirmStart {
+        padding-top: 5%;
+    }
+
+    #applyConfirmEnd {
+        margin-bottom: 5%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #ApplyHaru, #ApplyStella {
+        display: block;
+        width: 70%;
     }
 }
 
