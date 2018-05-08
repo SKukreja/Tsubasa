@@ -138,24 +138,24 @@
                 </div>
                 <div class="question">
                     @Html.LabelFor(m => m.DiscordHandle)
-                    @Html.TextAreaFor(m => m.DiscordHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.TextBoxFor(m => m.DiscordHandle)
                     @Html.Hidden("Q14", Html.DisplayNameFor(m => m.DiscordHandle))
                 </div>
                 <div class="question">
                     @Html.LabelFor(m => m.TwitchHandle)
-                    @Html.TextAreaFor(m => m.TwitchHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.TextBoxFor(m => m.TwitchHandle)
                     @Html.Hidden("Q15", Html.DisplayNameFor(m => m.TwitchHandle))
                 </div>
                 <div class="question">
                     @Html.LabelFor(m => m.YouTubeHandle)
-                    @Html.TextAreaFor(m => m.YouTubeHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.TextBoxFor(m => m.YouTubeHandle)
                     @Html.Hidden("Q16", Html.DisplayNameFor(m => m.YouTubeHandle))
                 </div>
                 <div class="question">
                     @ReCaptcha.GetCaptcha()
                 </div>
                 <div class="question submitButton">
-                    <input type="submit" value="Submit" class="submit" />
+                    <input type="submit" value="Submit" class="submit SoulWorkerButton" />
                 </div>
             </fieldset>
             }

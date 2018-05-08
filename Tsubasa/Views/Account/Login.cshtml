@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
-    Page.Title = "Login";
+    ViewBag.Title = "Login";
 }
 
 @section Scripts {
@@ -10,7 +10,13 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
 
-<section id="loginForm" class="StandardForm">
+@section page {
+<div class="StandardPage">
+    <video id="VideoBG" muted loop autoplay>
+        <source src="~/Images/Background.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="PageContainer">
     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "StandardFormBox", role = "form" }))
     {
         @AntiForgery.GetHtml()
@@ -25,15 +31,15 @@
                 </li>
                 <li class="password">
                     @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { @id = "password" })
+                    @Html.PasswordFor(m => m.Password, new { @id = "password", @class = "loginPassword" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     <p class="Subtitle">
                         <a href="~/Account/ForgotPassword">Forgot your password?</a>
                     </p>
                 </li>
                 <li class="remember-me">
-                    @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMe"})
-                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox"})
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMe" })
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
                 </li>
             </ol>
             <input type="submit" value="Log in" />
@@ -42,10 +48,11 @@
             </p>
         </fieldset>
     }
-</section>
+</div>
 <!--
 <section class="social" id="socialLoginForm">
     <h2>Use another service to log in.</h2>
     //RenderPage("~/Account/_ExternalLoginsList.cshtml")
 </section>
 -->
+}

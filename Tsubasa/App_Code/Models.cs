@@ -413,14 +413,13 @@ namespace Tsubasa.Models
         [Display(Name = "If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?")]
         public string Contribute { get; set; }
 
-        [Required]
-        [Display(Name = "Enter your Discord handle:")]
+        [Display(Name = "Please enter your Discord username (if you have one): ")]
         public string DiscordHandle { get; set; }
 
-        [Display(Name = "Enter your Twitch handle (if you have one): ")]
+        [Display(Name = "Please enter your Twitch handle (if you have one): ")]
         public string TwitchHandle { get; set; }
 
-        [Display(Name = "Enter your YouTube channel (if you have one): ")]
+        [Display(Name = "Please enter your YouTube channel (if you have one): ")]
         public string YouTubeHandle { get; set; }
     }
 
