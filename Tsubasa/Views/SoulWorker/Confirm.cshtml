@@ -3,7 +3,7 @@
 @using System.Net.Http;
 @using System.Net.Http.Headers;
 @{
-    Layout = "~/_SiteLayout.cshtml";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
     Page.Title = "Thanks for applying!";
     string referencePage = (Request.UrlReferrer == null) ? "" : Request.UrlReferrer.ToString();
     if (referencePage != "https://tsubasa.kr/SoulWorker/Apply")
@@ -20,7 +20,7 @@
         <h2 id="applyConfirmStart">Thanks for applying!</h2>
         <h3>Your guild application is being reviewed, and we will reach out to you in game or on Discord if you're accepted.</h3>
         <h3 id="applyConfirmEnd">In the meanwhile, feel free to hang out on our Discord server by clicking the button below!</h3>
-        <a class="discordButton" href="https://discordapp.com/invite/AamQhe">
+        <a class="discordButton" href="https://discord.gg/ysStgPw">
             <div class="buttonWrap">
                 <img src="~/Images/Discord.png" />
             </div>

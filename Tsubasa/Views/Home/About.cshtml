@@ -2,52 +2,10 @@
 @using System.Net;
 @using System.Net.Http;
 @using System.Net.Http.Headers;
+@using System.Security.Claims;
 @using hbehr.recaptcha;
 @{
-    Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "Tsubasa - SoulWorker Application";
-
-    if (IsPost) {
-        var characterName = Request["CharacterName"];
-        var characterClass = Request["CharacterSelect"];
-        var location = Request["location"];
-        var experience = Request["experience"];
-        var preference = Request["preference"];
-        var voiceComms = Request["voicecomms"];
-        var playtime = Request["playtime"];
-        var playerType = Request["playertype"];
-        var prevGuilds = Request["prevguilds"];
-        var lookingFor = Request["lookingfor"];
-        var prevMMOs = Request["prevmmos"];
-        var contribute = Request["contribute"];
-        string application = "__**Application**__\n\n**What is your character name?**\n" + characterName +
-            "\n\n**What is your primary character class?**\n" + characterClass+
-            "\n\n**Where are you from (please provide a timezone)?**\n"+location+
-            "\n\n**How much experience do you have playing SoulWorker? **\n" + experience +
-            "\n\n**Are you interested in PvP, PvE or both?**\n" + preference +
-            "\n\n**Are you comfortable using Voice Communication programs such as Discord?**\n" + voiceComms +
-            "\n\n**How frequently do you intend to play?**\n" + playtime +
-            "\n\n**Which of these describes you best?**\n" + playerType +
-            "\n\n**Which guild(s) were you in previously? (if any)**\n" + prevGuilds +
-            "\n\n**What are you looking for in a guild?**\n" + lookingFor +
-            "\n\n**Do you have any experiences with guilds/clans in other MMORPGs? If yes, please specify.**\n" + prevMMOs +
-            "\n\n**If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?**\n" + contribute + "\n\n\n";
-
-        string userResponse = Request["g-recaptcha-response"];
-        bool validCaptcha = ReCaptcha.ValidateCaptcha(userResponse);
-        if (validCaptcha)
-        {
-            DiscordWebhook.Webhook hook = new DiscordWebhook.Webhook("https://discordapp.com/api/webhooks/????????????????????????????????????");
-            hook.Send(application, "Website Application", "https://tsubasa.kr/Images/logo.png");
-            Response.Redirect("~/SoulWorker/Confirm");
-        }
-        else
-        {
-            Response.Redirect("~/");
-        }
-    }
-
-
+// Grab the user's login information from Identity
 
 }
 
@@ -57,7 +15,7 @@
         <img id="ApplyHaru" src="~/Images/Haru.png" />
         <h2>Ready to join us?</h2>
         <h3>Fill out the form below so we can get to know you!</h3>
-        <div class="SWApplyBox">
+        <div class="StandardFormBox">
             <form method="post">
                 <fieldset>
                     <div class="question">
