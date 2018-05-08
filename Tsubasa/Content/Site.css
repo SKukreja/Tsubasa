@@ -370,6 +370,18 @@ header.is-fixed {
     color: white;
 }
 
+#cd-lateral-nav footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+    width: 100%;
+    display: block;
+    color: white;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
 #cd-lateral-nav a.current {
     background-color: #3a4a4d;
     color: #FFF;
@@ -918,11 +930,11 @@ header.is-fixed {
     }
 
     #SWBanner h2 {
-        font-size: 24px
+        font-size: 20px
     }
 
     #SWBanner h3 {
-        font-size: 48px;
+        font-size: 32px;
     }
 }
 
@@ -968,7 +980,7 @@ header.is-fixed {
 
 /* SW Application Page */
 
-.SWApply {
+.SWApply, .Login {
     width: 100%;
     height: 100%;
     background-image: url('../Images/SWApplyBG.png');
@@ -979,19 +991,19 @@ header.is-fixed {
     overflow: scroll;
 }
 
-.SWApply::-webkit-scrollbar {
+.SWApply::-webkit-scrollbar, .Login::-webkit-scrollbar {
     width: 6px;
     background-color: #1a1a1a;
 }
 
-.SWApply::-webkit-scrollbar-thumb {
+.SWApply::-webkit-scrollbar-thumb, .Login::-webkit-scrollbar-thumb {
     background-color: #7289da;
 }
 
-.SWApply::-webkit-scrollbar-track {
+.SWApply::-webkit-scrollbar-track, .Login::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #1a1a1a;
-}
+}       
 
 .SWApply h2 {
     color: white;
@@ -1010,7 +1022,7 @@ header.is-fixed {
     padding-top: 20px;
 }
 
-.SWApplyBox {
+.StandardFormBox {
     background: rgba(8,9,11,.75);
     padding: 30px;
     position: absolute;
@@ -1023,6 +1035,9 @@ header.is-fixed {
     color: white;
     font-weight: bold;
     font-family: 'Viga', sans-serif;
+}
+
+.SoulWorkerFormBox {
     margin-bottom: 200px;
 }
 
@@ -1032,7 +1047,7 @@ header.is-fixed {
     clear: both;
 }
 
-.SWApplyBox input[type=text], .SWApplyBox textarea {
+.StandardFormBox input[type=text], .StandardFormBox textarea, .StandardFormBox input[type=password] {
     background: transparent;
     border: none;
     border-bottom: 1px solid #f0f0f0;
@@ -1049,7 +1064,7 @@ header.is-fixed {
     margin-bottom: 30px;
 }
 
-.SWApplyBox textarea {
+.StandardFormBox textarea {
     resize: none;
     overflow: hidden;
 }
@@ -1058,11 +1073,11 @@ header.is-fixed {
     text-align: center;
 }
 
-.SWApplyBox input[type=submit] {
+.StandardFormBox input[type=submit] {
     width: 100%;
 }
 
-.SWApplyBox input[type=submit], .SWButton {
+.StandardFormBox input[type=submit], .SWButton {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -1087,7 +1102,7 @@ header.is-fixed {
     transition: background 200ms ease-in-out;
 }
 
-.SWApplyBox input[type=submit]:hover, .SWButton:hover {
+.StandardFormBox input[type=submit]:hover, .SWButton:hover {
     background-color: #fcdb68;
 }
 
@@ -1232,7 +1247,7 @@ header.is-fixed {
         display: none;
     }
 
-    .SWApplyBox {
+    .StandardFormBox {
         width: 100%;
     }
 
@@ -1272,7 +1287,7 @@ header.is-fixed {
         width: 65%;
     }
 
-    .SWApplyBox {
+    .StandardFormBox {
         width: 40%;
     }
 
@@ -1535,3 +1550,45 @@ header.is-fixed {
     }
 }
 
+/*
+##################
+# Login/Register #
+##################
+*/
+
+.StandardForm {
+    background-image: url(../Images/SWApplyBG.png);
+    background-size: cover;
+    background-position: top center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.StandardFormBox h3 {
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.StandardForm .Subtitle {
+    padding: 5px 0;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: gray;
+}
+
+.StandardForm .Subtitle a {
+    color: #fab523;
+}
+
+.StandardForm .Subtitle a:hover {
+    color: white;
+}
+
+.remember-me {
+    padding-top: 20px;
+}
