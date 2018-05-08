@@ -370,6 +370,10 @@ namespace Tsubasa.Models
         public string Class { get; set; }
 
         [Required]
+        [Display(Name = "What is your character level?")]
+        public string CharacterLevel { get; set; }
+
+        [Required]
         [Display(Name = "Where are you from (please provide a timezone)?")]
         public string Location { get; set; }
 
@@ -408,6 +412,16 @@ namespace Tsubasa.Models
         [Required]
         [Display(Name = "If you were accepted into Tsubasa, would you be willing to contribute to the guild? How?")]
         public string Contribute { get; set; }
+
+        [Required]
+        [Display(Name = "Enter your Discord handle:")]
+        public string DiscordHandle { get; set; }
+
+        [Display(Name = "Enter your Twitch handle (if you have one): ")]
+        public string TwitchHandle { get; set; }
+
+        [Display(Name = "Enter your YouTube channel (if you have one): ")]
+        public string YouTubeHandle { get; set; }
     }
 
     public class ResetPasswordViewModel
