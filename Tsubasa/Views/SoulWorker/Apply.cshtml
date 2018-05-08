@@ -16,128 +16,148 @@
         @using (Html.BeginForm("Apply", "SoulWorker", FormMethod.Post, new { role = "form" }))
         {
                 @Html.AntiForgeryToken()
-                <fieldset>
-                    <div class="question">
-                        @Html.LabelFor(m => m.CharacterName)
-                        @Html.TextBoxFor(m => m.CharacterName)
-                        @Html.Hidden("Q1", Html.DisplayNameFor(m => m.CharacterName))
+            <fieldset>
+                <div class="question">
+                    @Html.LabelFor(m => m.CharacterName)
+                    @Html.TextBoxFor(m => m.CharacterName)
+                    @Html.Hidden("Q1", Html.DisplayNameFor(m => m.CharacterName))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Class)
+                    @Html.Hidden("Q2", Html.DisplayNameFor(m => m.Class))
+                    <div id="ClassSelectList">
+                        @{string id = ViewData.TemplateInfo.GetFullHtmlFieldId("HaruSelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Haru", new { id })
+                        <label class="CharacterClass ActiveClass" id="ClassHaru" for="@id"></label>
+                        @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("ErwinSelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Erwin", new { id })
+                        <label class="CharacterClass ActiveClass" id="ClassErwin" for="@id"></label>
+                        @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("LilySelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Lily", new { id })
+                        <label class="CharacterClass ActiveClass" id="ClassLily" for="@id"></label>
+                        @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("StellaSelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Stella", new { id })
+                        <label class="CharacterClass ActiveClass" id="ClassStella" for="@id"></label>
+                        @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("JinSelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Jin", new { id, disabled = "disabled" })
+                        <label class="CharacterClass InactiveClass" id="ClassJin" for="@id"></label>
+                        @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("IrisSelect");}
+                        @Html.RadioButtonFor(m => m.Class, "Iris", new { id, disabled = "disabled" })
+                        <label class="CharacterClass InactiveClass" id="ClassIris" for="@id"></label>
                     </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Class)
-                        @Html.Hidden("Q2", Html.DisplayNameFor(m => m.Class))
-                        <div id="ClassSelectList">
-                            @{string id = ViewData.TemplateInfo.GetFullHtmlFieldId("HaruSelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Haru", new { id })
-                            <label class="CharacterClass ActiveClass" id="ClassHaru" for="@id"></label>
-                            @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("ErwinSelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Erwin", new { id })
-                            <label class="CharacterClass ActiveClass" id="ClassErwin" for="@id"></label>
-                            @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("LilySelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Lily", new { id })
-                            <label class="CharacterClass ActiveClass" id="ClassLily" for="@id"></label>
-                            @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("StellaSelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Stella", new { id })
-                            <label class="CharacterClass ActiveClass" id="ClassStella" for="@id"></label>
-                            @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("JinSelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Jin", new { id, disabled = "disabled" })
-                            <label class="CharacterClass InactiveClass" id="ClassJin" for="@id"></label>
-                            @{id = ViewData.TemplateInfo.GetFullHtmlFieldId("IrisSelect");}
-                            @Html.RadioButtonFor(m => m.Class, "Iris", new { id, disabled = "disabled" })
-                            <label class="CharacterClass InactiveClass" id="ClassIris" for="@id"></label>
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.CharacterLevel)
+                    @Html.TextBoxFor(m => m.CharacterLevel)
+                    @Html.Hidden("Q3", Html.DisplayNameFor(m => m.CharacterLevel))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Location)
+                    @Html.TextBoxFor(m => m.Location)
+                    @Html.Hidden("Q4", Html.DisplayNameFor(m => m.Location))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Experience)
+                    @Html.TextBoxFor(m => m.Experience)
+                    @Html.Hidden("Q5", Html.DisplayNameFor(m => m.Experience))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Preference)
+                    @Html.Hidden("Q6", Html.DisplayNameFor(m => m.Preference))
+                    <div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.Preference, "PvP", new { id = "PrefPvP" })
+                            <label for="PrefPvP" class="radio">PvP!</label>
+                        </div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.Preference, "PvE", new { id = "PrefPvE" })
+                            <label for="PrefPvE" class="radio">PvE!</label>
+                        </div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.Preference, "Both", new { id = "PrefBoth" })
+                            <label for="PrefBoth" class="radio">Both!</label>
                         </div>
                     </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Location)
-                        @Html.TextBoxFor(m => m.Location)
-                        @Html.Hidden("Q3", Html.DisplayNameFor(m => m.Location))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Experience)
-                        @Html.TextBoxFor(m => m.Experience)
-                        @Html.Hidden("Q4", Html.DisplayNameFor(m => m.Experience))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Preference)
-                        @Html.Hidden("Q5", Html.DisplayNameFor(m => m.Preference))
-                        <div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.Preference, "PvP", new { id = "PrefPvP" })
-                                <label for="PrefPvP" class="radio">PvP!</label>
-                            </div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.Preference, "PvE", new { id = "PrefPvE" })
-                                <label for="PrefPvE" class="radio">PvE!</label>
-                            </div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.Preference, "Both", new { id = "PrefBoth" })
-                                <label for="PrefBoth" class="radio">Both!</label>
-                            </div>
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Voice)
+                    @Html.Hidden("Q7", Html.DisplayNameFor(m => m.Voice))
+                    <div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.Voice, "Yes", new { id = "voiceyes" })
+                            <label for="voiceyes" class="radio">Yes</label>
+                        </div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.Voice, "No", new { id = "voiceno" })
+                            <label for="voiceno" class="radio">No</label>
                         </div>
                     </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Voice)
-                        @Html.Hidden("Q6", Html.DisplayNameFor(m => m.Voice))
-                        <div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.Voice, "Yes", new { id = "voiceyes" })
-                                <label for="voiceyes" class="radio">Yes</label>
-                            </div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.Voice, "No", new { id = "voiceno" })
-                                <label for="voiceno" class="radio">No</label>
-                            </div>
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Playtime)
+                    @Html.TextBoxFor(m => m.Playtime)
+                    @Html.Hidden("Q8", Html.DisplayNameFor(m => m.Playtime))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.PlayerType)
+                    @Html.Hidden("Q9", Html.DisplayNameFor(m => m.PlayerType))
+                    <div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.PlayerType, "Casual", new { id = "casual" })
+                            <label for="casual" class="radio">Casual</label>
+                        </div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.PlayerType, "Semi-Hardcore", new { id = "shc" })
+                            <label for="shc" class="radio">Semi-Hardcore</label>
+                        </div>
+                        <div class="radio-choice">
+                            @Html.RadioButtonFor(m => m.PlayerType, "Hardcore", new { id = "hc" })
+                            <label for="hc" class="radio">Hardcore</label>
                         </div>
                     </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Playtime)
-                        @Html.TextBoxFor(m => m.Playtime)
-                        @Html.Hidden("Q7", Html.DisplayNameFor(m => m.Playtime))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.PlayerType)
-                        @Html.Hidden("Q8", Html.DisplayNameFor(m => m.PlayerType))
-                        <div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.PlayerType, "Casual", new { id = "casual" })
-                                <label for="casual" class="radio">Casual</label>
-                            </div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.PlayerType, "Semi-Hardcore", new { id = "shc" })
-                                <label for="shc" class="radio">Semi-Hardcore</label>
-                            </div>
-                            <div class="radio-choice">
-                                @Html.RadioButtonFor(m => m.PlayerType, "Hardcore", new { id = "hc" })
-                                <label for="hc" class="radio">Hardcore</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.PrevGuilds)
-                        @Html.TextBoxFor(m => m.PrevGuilds)
-                        @Html.Hidden("Q9", Html.DisplayNameFor(m => m.PrevGuilds))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.LookingFor)
-                        @Html.TextAreaFor(m => m.LookingFor, new { rows="1", onkeyup="auto_grow(this)" })
-                        @Html.Hidden("Q10", Html.DisplayNameFor(m => m.LookingFor))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.PrevMMOs)
-                        @Html.TextAreaFor(m => m.PrevMMOs, new { rows = "1", onkeyup = "auto_grow(this)" })
-                        @Html.Hidden("Q11", Html.DisplayNameFor(m => m.PrevMMOs))
-                    </div>
-                    <div class="question">
-                        @Html.LabelFor(m => m.Contribute)
-                        @Html.TextAreaFor(m => m.Contribute, new { rows = "1", onkeyup = "auto_grow(this)" })
-                        @Html.Hidden("Q12", Html.DisplayNameFor(m => m.Contribute))
-                    </div>
-                    <div class="question">
-                        @ReCaptcha.GetCaptcha()
-                    </div>
-                    <div class="question submitButton">
-                        <input type="submit" value="Submit" class="submit" />
-                    </div>
-                </fieldset>
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.PrevGuilds)
+                    @Html.TextBoxFor(m => m.PrevGuilds)
+                    @Html.Hidden("Q10", Html.DisplayNameFor(m => m.PrevGuilds))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.LookingFor)
+                    @Html.TextAreaFor(m => m.LookingFor, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q11", Html.DisplayNameFor(m => m.LookingFor))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.PrevMMOs)
+                    @Html.TextAreaFor(m => m.PrevMMOs, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q12", Html.DisplayNameFor(m => m.PrevMMOs))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.Contribute)
+                    @Html.TextAreaFor(m => m.Contribute, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q13", Html.DisplayNameFor(m => m.Contribute))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.DiscordHandle)
+                    @Html.TextAreaFor(m => m.DiscordHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q14", Html.DisplayNameFor(m => m.DiscordHandle))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.TwitchHandle)
+                    @Html.TextAreaFor(m => m.TwitchHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q15", Html.DisplayNameFor(m => m.TwitchHandle))
+                </div>
+                <div class="question">
+                    @Html.LabelFor(m => m.YouTubeHandle)
+                    @Html.TextAreaFor(m => m.YouTubeHandle, new { rows = "1", onkeyup = "auto_grow(this)" })
+                    @Html.Hidden("Q16", Html.DisplayNameFor(m => m.YouTubeHandle))
+                </div>
+                <div class="question">
+                    @ReCaptcha.GetCaptcha()
+                </div>
+                <div class="question submitButton">
+                    <input type="submit" value="Submit" class="submit" />
+                </div>
+            </fieldset>
             }
         </div>
     </div>
