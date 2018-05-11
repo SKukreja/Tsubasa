@@ -7,8 +7,8 @@
         <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
         <script src="~/Scripts/modernizr-2.6.2.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -16,33 +16,34 @@
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>            
-        <header>
-            <a id="cd-logo" href="~/"><img src="~/Images/logo.png" alt="Homepage"><br />TSUBASA</a>
-            <nav id="cd-top-nav">
-                @if (Request.IsAuthenticated)
-                {
-                        <ul>
-                            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                        </ul>
-                }
-                else
-                {
-                    <ul>
-                        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                        <li>@Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                    </ul>
-                }
-            </nav>
-            <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
-        </header>
-        <main class="cd-main-content">
-            <div id="body">
-                @RenderSection("page", required: false)
-                <section class="content-wrapper main-content clear-fix">
-                    @RenderBody()
-                </section>
-            </div>
-        </main> <!-- cd-main-content -->
+    <header>
+        <a id="cd-logo" href="~/"><img src="~/Images/logo.png" alt="Homepage"><br />TSUBASA</a>
+        <nav id="cd-top-nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul>
+                    <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                </ul>
+            }
+            else
+            {
+                <ul>
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
+            }
+        </nav>
+        <a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+    </header>
+
+    <main class="cd-main-content">
+        <div id="body">
+            @RenderSection("page", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </main> <!-- cd-main-content -->
         <nav id="cd-lateral-nav">
             <ul class="cd-navigation">
                 <li class="item-has-children">

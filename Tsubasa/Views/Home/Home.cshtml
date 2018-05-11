@@ -1,8 +1,88 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@using Tsubasa.Models;
+
+@{
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
-    Page.Title = "Tsubasa";
+    ViewBag.Title = "Home";
+    ApplicationUserManager UserManager = (ApplicationUserManager) ViewData["UserManager"];
 }
 
-<div>
-    
-</div>
+@section page {
+    <div class="PageContainer">
+        <div class="StandardPageBox MainContent">
+            <div class="blur"></div>
+            <div class="Content">
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">34 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                    <p class="Subtitle Metadata">Posted by: <a href="#">Shogie</a></p>
+                </div>
+                <hr>
+                <div class="NewsEntry">
+                    <h1 class="StandardHeader">Lorem Impsum <span class="Subtitle">4 minutes ago</span></h1>
+                    <p><img class="NewsListImage" src="~/Images/blank.jpg" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.<br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tellus ante, fermentum sed sem ut, sodales volutpat erat. Phasellus quam erat, pharetra ac vehicula sed, euismod sed turpis. Morbi at ante et eros porttitor mollis in non mi. Nullam non sapien nisl. Phasellus at lorem id libero hendrerit scelerisque. Duis elit eros, dictum ut pulvinar et, ultrices vel turpis. Nulla ullamcorper est congue pretium congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dignissim ex at enim venenatis pulvinar. Nam ex arcu, ullamcorper feugiat finibus a, convallis at lacus. Aliquam vel ornare lacus, in facilisis urna. Nulla elementum vel ligula vel elementum.</p>
+                </div>
+            </div>
+        </div>
+        @if (UserManager.IsInRole(User.Identity.GetUserId(), "User"))
+        {
+            <div class="StandardPageBox SideMenu">
+                <div class="blur"></div>
+                <div class="Content">
+                    <div class="NewsEntry">
+                        <h1 class="StandardHeader">Welcome @User.Identity.GetUserName()</h1>
+                        <p>Brian wants to join</p>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (UserManager.IsInRole(User.Identity.GetUserId(), "Admin"))
+        {
+            <div class="StandardPageBox SideMenu">
+                <div class="blur"></div>
+                <div class="Content">
+                    <div class="NewsEntry">
+                        <h1 class="StandardHeader">Recent Applications</h1>
+                        <p>Brian wants to join</p>
+                    </div>
+                </div>
+            </div>
+         }
+    </div>
+    <!--
+    <section class="social" id="socialLoginForm">
+        <h2>Use another service to log in.</h2>
+        //RenderPage("~/Account/_ExternalLoginsList.cshtml")
+    </section>
+    -->
+}
